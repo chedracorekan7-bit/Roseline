@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rachade-orekan-portfolio.vercel.app/sitemap.xml
+Sitemap: https://roseline-dako-portfolio.vercel.app/sitemap.xml

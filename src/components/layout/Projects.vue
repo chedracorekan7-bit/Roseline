@@ -3,12 +3,12 @@
     <SectionHeader title="Mes projets" />
     
     <!-- Navigation buttons - Hidden on mobile -->
-    <button class="swiper-prev absolute top-[550px] left-2 sm:left-4 lg:left-6 transform -translate-y-1/2 z-20 bg-gray-900 dark:bg-gray-800 text-yellow-300 p-2.5 sm:p-3 lg:p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 hidden sm:flex items-center justify-center border border-yellow-300/20 hover:border-yellow-300/40">
+    <button class="swiper-prev absolute top-[550px] left-2 sm:left-4 lg:left-6 transform -translate-y-1/2 z-20 bg-gray-900 dark:bg-gray-800 text-yellow-300 dark:text-blue-500 p-2.5 sm:p-3 lg:p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 hidden sm:flex items-center justify-center border border-blue-300/20 hover:border-blue-300/40">
       <svg class="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" fill="currentColor" viewBox="0 0 24 24">
         <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
       </svg>
     </button>
-    <button class="swiper-next absolute top-[550px] right-2 sm:right-4 lg:right-6 transform -translate-y-1/2 z-20 bg-gray-900 dark:bg-gray-800 text-yellow-300 p-2.5 sm:p-3 lg:p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 hidden sm:flex items-center justify-center border border-yellow-300/20 hover:border-yellow-300/40">
+    <button class="swiper-next absolute top-[550px] right-2 sm:right-4 lg:right-6 transform -translate-y-1/2 z-20 bg-gray-900 dark:bg-gray-800 text-yellow-300 dark:text-blue-500 p-2.5 sm:p-3 lg:p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 hidden sm:flex items-center justify-center border border-blue-300/20 hover:border-blue-300/40">
       <svg class="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" fill="currentColor" viewBox="0 0 24 24">
         <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
       </svg>
@@ -20,9 +20,13 @@
         :effect="'coverflow'"
         grabCursor
         centeredSlides
-        :slidesPerView="1"
-        :spaceBetween="20"
+        :slidesPerView="1.2"
+        :spaceBetween="15"
         :breakpoints="{
+          480: {
+            slidesPerView: 1.5,
+            spaceBetween: 20
+          },
           640: {
             slidesPerView: 2,
             spaceBetween: 30
@@ -33,20 +37,25 @@
           }
         }"
         :coverflowEffect="{
-          rotate: 30,
+          rotate: 20,
           stretch: 0,
-          depth: 100,
+          depth: 80,
           modifier: 1,
           slideShadows: true,
         }"
         :navigation="navigationOptions"
         :pagination="{ clickable: true, dynamicBullets: true }"
+        :touchRatio="1.5"
+        :touchAngle="45"
+        :simulateTouch="true"
+        :allowTouchMove="true"
+        :touchStartPreventDefault="false"
         loop
         :modules="[EffectCoverflow, Navigation, Pagination]"
         class="w-full pb-12"
       >
         <swiper-slide
-          class="max-w-[280px] sm:max-w-[320px] lg:max-w-[350px]"
+          class="max-w-[260px] sm:max-w-[320px] lg:max-w-[350px] select-none"
           v-for="(project, index) in projects"
           :key="index"
         >
@@ -61,12 +70,16 @@
         </swiper-slide>
       </swiper>
     </div>
+    
+    <!-- Modal pour afficher les images en plein écran -->
+    <ImageModal />
   </section>
 </template>
 <script setup>
 import SectionHeader from "../UI/SectionHeader.vue";
 import ProjectCard from "../UI/ProjectCard.vue";
-import { Icon } from "@iconify/vue";
+import ImageModal from "../UI/ImageModal.vue";
+
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
@@ -82,19 +95,14 @@ import projet3 from "@/assets/img/projet3.jpg";
 import projet4 from "@/assets/img/projet4.jpg";
 import projet5 from "@/assets/img/projet5.jpg";
 import projet6 from "@/assets/img/projet6.jpg";
-import projet7 from "@/assets/img/projet7.png";
+import projet7 from "@/assets/img/projet7.jpg";
 import projet8 from "@/assets/img/projet8.jpg";
 import projet9 from "@/assets/img/projet9.jpg";
 import projet10 from "@/assets/img/projet10.jpg";
-import projet11 from "@/assets/img/projet11.PNG";
-import projet12 from "@/assets/img/projet12.PNG";
-import projet13 from "@/assets/img/projet13.PNG";
 import projet14 from "@/assets/img/projet14.PNG";
 import projet15 from "@/assets/img/projet15.PNG";
 import projet16 from "@/assets/img/projet16.PNG";
-import projetA from "@/assets/img/projetA.jpg";
-import projetB from "@/assets/img/projetB.jpg";
-import projet8A from "@/assets/img/projet8A.jpg";
+
 
 // Definir les options de navigation
 const navigationOptions = {
@@ -104,174 +112,128 @@ const navigationOptions = {
 
 const projects = ref([
   {
-    title: "Design UI",
+    title: "Graphisme",
     description:
-      "Interface interactive et responsive d'une plateforme.",
+      "Visuel pour un événement de graphiste et designers.",
     image: projet1,
-    tags: ["HTML", "CSS", "Javascript"],
+    tags: ["Photoshop"],
     liveLink: "/",
     codeLink: "",
   },
   {
-    title: "Design UI",
+    title: "Graphisme",
     description:
-      "Interface interactive et responsive d'une plateforme.",
+      "Logo d'un restaurent de mets Africain.",
     image: projet2,
-    tags: ["Vue.js", "Tailwind Css"],
+    tags: ["InDesign"],
     liveLink: "/",
     codeLink: "",
   },
   {
-    title: "Formulaire responsive UI",
+    title: "Graphisme",
     description:
-      "Formulaire d'inscription et de connection",
+      "Visuel pour une entreprise de Snacks.",
     image: projet3,
-    tags: ["React", "D3.js"],
+    tags: ["Photoshop"],
     liveLink: "/",
     codeLink: "",
   },
   {
-    title: "Design UI",
-    description: "Formulaire d'inscription et de connection",
+    title: "Graphisme",
+    description: "Visuel pour une entreprise de vente de materiels informatique.",
     image: projet4,
-    tags: ["React Native", "Firebase"],
+    tags: ["Premiere Pro"],
     liveLink: "/",
     codeLink: "",
   },
   {
-    title: "Design UI",
-    description: "Formulaire d'inscription et de connection",
+    title: "Graphisme",
+    description: "Logo pour une entreprise de Stylisme et de Haute Couture.",
     image: projet5,
-    tags: ["HTML", "CSS", "JavaScript"],
+    tags: ["InDesign"],
     liveLink: "/",
     codeLink: "",
   },
   {
-    title: "Design UI",
+    title: "Graphisme",
     description:
-      "Formulaire d'inscription et de connection",
+      "Logo pour une entreprise de E-commerce.",
     image: projet6,
-    tags: ["HTML", "CSS", "Javascript"],
+    tags: ["Photoshop"],
     liveLink: "/",
     codeLink: "",
   },
 
   {
-    title: "Site Vitrine",
-    description: "Site web responsive pour une entreprise de services",
+    title: "Graphisme",
+    description: "Visuel pour un salon de beauté.",
     image: projet7,
-    tags: ["HTML", "CSS", "JavaScript"],
+    tags: ["Illustrator"],
     liveLink: "/",
     codeLink: "",
   },
 
   {
-    title: "Site Vitrine",
-    description: "Site web responsive pour une entreprise de services",
+    title: "Graphisme",
+    description: "Visuel pour un restaurant Africain.",
     image: projet8,
-    tags: ["HTML", "CSS", "JavaScript"],
+    tags: ["InDesign"],
     liveLink: "/",
     codeLink: "",
   },
 
-  {
-    title: "Design UI",
-    description: "Formulaire d'inscription et de connection",
-    image: projet8A,
-    tags: ["Vue.js", "Tailwind Css"],
-    liveLink: "/",
-    codeLink: "",
-  },
+  
 
   {
-    title: "Design UI",
-    description: "Formulaire d'inscription et de connection",
+    title: "Graphisme",
+    description: "Affiche publicitaire pour boutique de mode.",
     image: projet9,
-    tags: ["HTML", "CSS", "JavaScript"],
+    tags: ["Photoshop"],
     liveLink: "/",
     codeLink: "",
   },
 
   {
-    title: "Design UI",
-    description: "Formulaire d'inscription et de connection",
+    title: "Design UI/UX",
+    description: "Formulaire d'inscription et de connection.",
     image: projet10,
-    tags: ["HTML", "CSS", "JavaScript"],
+    tags: ["Figma"],
     liveLink: "/",
     codeLink: "",
   },
 
-  {
-    title: "Dash Board",
-    description: "Interface utilisateur d'une application.",
-    image: projet11,
-    tags: ["HTML", "CSS", "JavaScript"],
-    liveLink: "/",
-    codeLink: "",
-  },
+  
+
+  
 
   {
-    title: "Dash Board",
-    description: "Interface utilisateur d'une application",
-    image: projet12,
-    tags: ["HTML", "CSS", "JavaScript"],
-    liveLink: "/",
-    codeLink: "",
-  },
-
-  {
-    title: "Dash Board",
-    description: "Interface utilisateur d'une application",
-    image: projet13,
-    tags: ["HTML", "CSS", "JavaScript"],
-    liveLink: "/",
-    codeLink: "",
-  },
-
-  {
-    title: "Design UI",
-    description: "Formulaire d'inscription et de connection",
+    title: "Design UI/UX",
+    description: "Formulaire d'inscription et de connection.",
     image: projet14,
-    tags: ["HTML", "CSS", "JavaScript"],
+    tags: ["Figma"],
     liveLink: "/",
     codeLink: "",
   },
 
   {
     title: "Design UI",
-    description: "Formulaire d'inscription et de connection",
+    description: "Formulaire d'inscription et de connection.",
     image: projet15,
-    tags: ["HTML", "CSS", "JavaScript"],
+    tags: ["Figma", ],
     liveLink: "/",
     codeLink: "",
   },
 
   {
     title: "Design UI",
-    description: "Formulaire d'inscription et de connection",
+    description: "Formulaire d'inscription et de connection.",
     image: projet16,
-    tags: ["HTML", "CSS", "JavaScript"],
+    tags: ["Figma"],
     liveLink: "/",
     codeLink: "",
   },
 
-  {
-    title: "To-Do App",
-    description: "Application de gestion de taches.",
-    image: projetA,
-    tags: ["HTML", "CSS", "JavaScript"],
-    liveLink: "/",
-    codeLink: "",
-  },
-
-  {
-    title: "To-Do App",
-    description: "Application de gestion de taches.",
-    image: projetB,
-    tags: ["HTML", "CSS", "JavaScript"],
-    liveLink: "/",
-    codeLink: "",
-  },
+  
 ]);
 </script>
 
@@ -285,6 +247,23 @@ const projects = ref([
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* Amélioration du touch sur mobile */
+.swiper {
+  touch-action: pan-y;
+}
+
+@media (max-width: 640px) {
+  .swiper {
+    touch-action: manipulation;
+  }
   
+  .swiper-slide {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
 }
 </style>

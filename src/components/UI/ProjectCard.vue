@@ -1,8 +1,13 @@
 <template>
-    <article class="w-full max-w-sm mx-auto overflow-hidden shadow-lg rounded-lg sm:rounded-xl border border-secondary dark:bg-[#ffffff29] bg-primary">
+    <article class="w-full max-w-sm mx-auto overflow-hidden shadow-lg rounded-lg sm:rounded-xl border border-yellow-400 dark:border-blue-500 bg-primary">
         <!-- Selection d'image -->
-         <figure>
-            <img :src="image" :alt="title" class="w-full h-40 sm:h-48 lg:h-52 object-cover">
+         <figure class="w-full h-48 overflow-hidden bg-gray-100 dark:bg-gray-800 cursor-pointer group">
+            <img 
+              :src="image" 
+              :alt="title" 
+              class="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+              @click="openModal(image, title)"
+            >
          </figure>
 
          <!-- Content section -->
@@ -63,5 +68,9 @@ codeLink:{
     default:'null'
 },
 })
+
+import { useImageModal } from '@/composables/useImageModal'
+
+const { openModal } = useImageModal()
 
 </script>

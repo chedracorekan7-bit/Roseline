@@ -3,28 +3,28 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://rachade-orekan-portfolio.vercel.app/</loc>
+    <loc>https://roseline-dako-portfolio.vercel.app/</loc>
     <lastmod>2025-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://rachade-orekan-portfolio.vercel.app/projects</loc>
+    <loc>https://roseline-dako-portfolio.vercel.app/projects</loc>
     <lastmod>2025-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://rachade-orekan-portfolio.vercel.app/contact</loc>
+    <loc>https://roseline-dako-portfolio.vercel.app/contact</loc>
     <lastmod>2025-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://rachade-orekan-portfolio.vercel.app/about</loc>
+    <loc>https://roseline-dako-portfolio.vercel.app/about</loc>
     <lastmod>2025-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

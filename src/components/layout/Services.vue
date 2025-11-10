@@ -13,12 +13,12 @@
         >
           <div class="flex justify-center items-center relative pt-6 sm:pt-8">
             <div class="icon-container relative bg-slate-900 dark:bg-white/10 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28">
-              <span class="absolute inset-1 border-2 border-yellow-300 rounded-full z-[5] animate-pulse"></span>
-              <Icon :icon="element.icon" class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl text-yellow-300 relative z-[10] drop-shadow-sm flex-shrink-0" />
+              <span class="absolute inset-1 border-2 border-yellow-300 dark:border-blue-500 rounded-full z-[5] animate-pulse"></span>
+              <Icon :icon="element.icon" class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl text-yellow-300 dark:text-blue-500 relative z-[10] drop-shadow-sm flex-shrink-0" />
             </div>
           </div>
           <div class="p-4 sm:p-5 lg:p-6 xl:p-8">
-            <h3 class="uppercase font-semibold text-yellow-300 text-sm sm:text-base lg:text-lg mb-2 sm:mb-3">{{ element.name }}</h3>
+            <h3 class="uppercase font-semibold text-yellow-300 dark:text-blue-500 text-sm sm:text-base lg:text-lg mb-2 sm:mb-3">{{ element.name }}</h3>
             <p class="text-xs sm:text-sm lg:text-base leading-relaxed text-white tracking-wide">{{ element.description }}</p>
           </div>
         </div>
@@ -41,40 +41,42 @@ const setArticleRef = (el, id) => {
 }
 
 const services = ref([
+  
+
    {id:1,
-      icon:"mdi:code-tags",
-      name:'Developpement Web FullStack',
-      description:'Je crée des applications web complètes avec des technologies modernes comme Vue.js, React et Node.js.'
+      icon:"mdi:printer",
+      name:'Supports de communication imprimes',
+      description:'Je realise des affiches, flyers,cartes de visites, brochures, dépliants, packaging emballages.'
    },
 
    {id:2,
-      icon:"mdi:file-document-edit",
-      name:'Rédaction Technique',
-      description:'Je rédige une documentation claire et précise pour vos projets techniques et APIs.'
+      icon:"mdi:devices",
+      name:'Supports de communication numeriques',
+      description: "Je conçois des interfaces utilisateur modernes et intuitives pour vos applications."
    },
 
    {id:3,
-      icon:"mdi:cellphone-link",
-      name:'Développement Mobile',
-      description:'Je développe des applications mobiles natives, responsives et hybrides pour iOS et Android.'
+      icon:"mdi:chart-line",
+      name:'Supports Marketing Digital',
+      description:'Je réalise des banières publicitaires et visuels pour promouvoir votre marque ou votre produit.'
    },
 
    {id:4,
-      icon:"mdi:email-outline",
-      name:'Consultation IT',
-      description:'Je vous accompagne dans vos choix technologiques et l\'architecture de vos projets.'
+      icon:"mdi:palette",
+      name:'Création de marque et identites visuelles.',
+      description:'Je crée pour votre entreprise des logos et une charte graphique pour le développement de votre marque et de votre entreprise.'
    },
 
    {id:5,
-      icon:"mdi:palette",
-      name:'UI/UX Design',
-      description:'Je conçois des interfaces utilisateur modernes et intuitives pour vos applications.'
+      icon:"mdi:newspaper",
+      name:'Édition et publication',
+      description:"J'assure la conception de catalogues produits, de couverture de livres, de magazines et journaux. "
    },
 
    {id:6,
-      icon:"mdi:web",
-      name:'Optimisation Web',
-      description:'J\'optimise les performances et le référencement de vos sites web existants.'
+      icon:"mdi:animation",
+      name:'Animation et motion Design',
+      description:'Je crée des animations 2D et 3D, des vidéos explicatives ainsi que des génériques d\'introduction pour vos entreprises.'
    }
 ])
 
@@ -112,7 +114,7 @@ onUnmounted(() => {
 const getServiceClasses = (id) => {
   const baseClasses = [
     'h-full', 'relative', 'flex', 'flex-col', 'justify-start', 'text-center',
-    'rounded-2xl', 'sm:rounded-3xl', 'border', 'border-yellow-300', 'dark:bg-white/10', 'bg-slate-900',
+    'rounded-2xl', 'sm:rounded-3xl', 'border', 'border-blue-500', 'dark:bg-white/10', 'bg-slate-900',
     'transition-all', 'duration-[800ms]', 'ease-out', 'hover:scale-105', 'hover:shadow-xl'
   ]
   

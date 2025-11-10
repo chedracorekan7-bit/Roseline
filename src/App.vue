@@ -1,5 +1,6 @@
-<template >
-   <div class="bg-[#d4ebf8] dark:bg-[#080326] min-h-screen">
+<template>
+  <div class="relative z-10 bg-[#d4ebf8] dark:bg-transparent min-h-screen">
+    <Starfield v-if="isDark" />
     <NavBar />
     <HeroSection />
     <Counter />
@@ -8,27 +9,28 @@
     <Whyme />
     <Projects />
     <Contact />
-    <Footer/>
+    <Footer />
     <BacktoTop />
-   </div>
+  </div>
 </template>
 <script setup>
-import { onMounted } from 'vue'
-import NavBar from './components/layout/NavBar.vue'
-import { useTheme } from './composables/useTheme'
-import HeroSection from './components/layout/HeroSection.vue'
-import Counter from './components/layout/Counter.vue'
-import Services from './components/layout/Services.vue'
-import Skills from './components/layout/Skills.vue'
-import Whyme from './components/layout/Whyme.vue'
-import Projects from './components/layout/Projects.vue'
-import Contact from './components/layout/Contact.vue'
-import Footer from './components/layout/Footer.vue'
-import BacktoTop from './components/layout/BacktoTop.vue'
+import { onMounted } from "vue";
+import NavBar from "./components/layout/NavBar.vue";
+import { useTheme } from "./composables/useTheme";
+import HeroSection from "./components/layout/HeroSection.vue";
+import Counter from "./components/layout/Counter.vue";
+import Services from "./components/layout/Services.vue";
+import Skills from "./components/layout/Skills.vue";
+import Whyme from "./components/layout/Whyme.vue";
+import Projects from "./components/layout/Projects.vue";
+import Contact from "./components/layout/Contact.vue";
+import Footer from "./components/layout/Footer.vue";
+import BacktoTop from "./components/layout/BacktoTop.vue";
+import Starfield from "./components/layout/Starfield.vue";
 
-const { initTheme } = useTheme()
+const { initTheme, isDark } = useTheme();
 
 onMounted(() => {
-  initTheme()
-})
+  initTheme();
+});
 </script>

@@ -9,7 +9,7 @@
 
     <ul 
     ref="statsSection"
-    class="relative z-10 p-4 sm:p-6 lg:p-8 mx-auto w-full max-w-6xl rounded-2xl sm:rounded-3xl border bg-slate-900 text-white dark:bg-white/10 dark:text-white backdrop-blur-sm shadow-lg grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-12 border-yellow-300 dark:border-yellow-300 divide-y sm:divide-y-0 sm:divide-x divide-yellow-300 dark:divide-yellow-300">
+    class="relative z-10 p-4 sm:p-6 lg:p-8 mx-auto w-full max-w-6xl rounded-2xl sm:rounded-3xl border bg-slate-900 text-white dark:bg-white/10 dark:text-white backdrop-blur-sm shadow-lg grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-12 border-purple-500 dark:border-blue-500 divide-y sm:divide-y-0 sm:divide-x divide-blue-900 dark:divide-blue-900">
 <li v-for="element in numbers" :key="element.id" class="text-center py-2 sm:py-0">
     <h2 class="font-semibold flex justify-center text-2xl sm:text-3xl lg:text-4xl w-full text-white dark:text-white"> 
         + <Countup v-if="hasIntersected" :endVal="element.number" :duration="2" /> </h2>
@@ -23,10 +23,10 @@ import { ref, onMounted } from 'vue'
 import Countup from 'vue-countup-v3'
 
 const numbers = ref([
-    {id:1, number:12, title:"Projets réalisés"},
-    {id:2, number:200, title:"Heures de code"},
+    {id:1, number:15, title:"Projets réalisés"},
+    {id:2, number:200, title:"Heures de Design "},
     {id:3, number:120, title:"Clients satisfaits"},
-    {id:4, number:5, title:"Années d'expérience"},
+    {id:4, number:3, title:"Années d'expérience"},
 ])
     
 const statsSection = ref(null);

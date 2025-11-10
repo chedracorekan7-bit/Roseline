@@ -12,7 +12,7 @@
     <h2 
       ref="titleRef"
       :class="[
-        'text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-center dark:text-[#D4AF37] text-gray-900 relative z-10 px-4',
+        'text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-center dark:text-[rgb(221,16,239)] text-gray-900 relative z-10 px-4',
         'transition-all duration-[600ms] ease-out',
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       ]"
