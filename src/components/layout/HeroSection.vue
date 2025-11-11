@@ -162,7 +162,7 @@ const scrollToContact = () => {
 
 const downloadCV = () => {
   // Logique pour télécharger le CV
-  const fileName = "CV pro.pdf";
+  const fileName = "CV roseline-dako.pdf";
   const link = document.createElement("a");
   link.href = `/${encodeURIComponent(fileName)}`;
   link.download = fileName;

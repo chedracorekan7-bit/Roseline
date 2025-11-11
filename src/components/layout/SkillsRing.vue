@@ -47,10 +47,10 @@
       </svg>
 
       <!-- Pourcentage -->
-      <div class="absolute inset-0 flex items-center justify-center">
+      <div class="absolute inset-0 flex items-center justify-center mr-3.5 mt-4">
         
         <span
-  class="text-xl font-semibold drop-shadow-[0_0_10px_rgba(236,72,153,0.6)]"
+  class="text-xl font-semibold drop-shadow-[0_0_10px_rgba(236,72,153,0.6)] "
   :class="textColor"
 >
   {{ displayedValue }}%
@@ -60,7 +60,7 @@
     </div>
 
     <!-- Nom de la compétence -->
-    <p class="mt-2 text-center font-medium tracking-wide" :class="textColor">
+    <p class="mt-2 text-center font-medium tracking-wide mr-4" :class="textColor">
   {{ label }}
 </p>
 
