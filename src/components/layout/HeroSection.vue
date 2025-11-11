@@ -103,51 +103,43 @@ onMounted(()=>{
 
 const roles = [
   'Graphiste.',
-  'Designer UI/UX.' 
+  'Designer UI/UX.'
 ]
 
-const displayedText = ref('');
-const currentRole = ref(0);
-const isDeleting = ref(false);
-const isDark = ref(false);
+const displayedText = ref('')
+const currentRole = ref(0)
+const isDeleting = ref(false)
+const isDark = ref(false)
 
-const typeSpeed = 50;
-const eraseSpeed = 50;
-const delayBetweenWords = 1000;
+const typeSpeed = 100
+const eraseSpeed = 50
+const delayBetweenWords = 2000
 
-onMounted(()=>{
-  const checkDark = ()=>{
-    isDark.value = document.documentElement.classList.contains('dark')
-  }
-  checkDark();
-  const observer = new
-  MutationObserver(checkDark)
-
-  observer.observe(document.documentElement,{attributes:true,attributeFilter:['class']})
-  typeEffect()
-})
-
-function typeEffect(){
-  const role = 
-  roles[currentRole.value]
-  if(!isDeleting.value) {
+function typeEffect() {
+  const role = roles[currentRole.value]
+  
+  if (!isDeleting.value) {
+    // Écriture du texte
     displayedText.value = role.substring(0, displayedText.value.length + 1)
-    if(displayedText.value === role){
-      setTimeout(()=>(isDeleting.value = true),
-    delayBetweenWords)
+    
+    if (displayedText.value === role) {
+      // Pause avant de commencer à effacer
+      setTimeout(() => {
+        isDeleting.value = true
+        typeEffect()
+      }, delayBetweenWords)
+      return
     }
-  }else{
-    displayedText.value = role.substring(0,
-      displayedText.value.length - 1
-    )
-
-    if(displayedText.value === '')
-  {
-    isDeleting.value = false
-    currentRole.value = (currentRole.value + 1) % roles.length
+  } else {
+    // Effacement du texte
+    displayedText.value = role.substring(0, displayedText.value.length - 1)
+    
+    if (displayedText.value === '') {
+      isDeleting.value = false
+      currentRole.value = (currentRole.value + 1) % roles.length
+    }
   }
-  }
-
+  
   const speed = isDeleting.value ? eraseSpeed : typeSpeed
   setTimeout(typeEffect, speed)
 }
@@ -172,20 +164,36 @@ const downloadCV = () => {
 };
 
 onMounted(() => {
-  const observer = new IntersectionObserver(
+  // Gestion du thème sombre
+  const checkDark = () => {
+    isDark.value = document.documentElement.classList.contains('dark')
+  }
+  checkDark()
+  
+  const observer = new MutationObserver(checkDark)
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class']
+  })
+  
+  // Démarrage de l'effet typewriter
+  typeEffect()
+  
+  // Animation d'entrée
+  const intersectionObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("animate-fade-in-up");
+          entry.target.classList.add("animate-fade-in-up")
         }
-      });
+      })
     },
     { threshold: 0.1 }
-  );
+  )
 
-  const elements = document.querySelectorAll(".hero-animate");
-  elements.forEach((el) => observer.observe(el));
-});
+  const elements = document.querySelectorAll(".hero-animate")
+  elements.forEach((el) => intersectionObserver.observe(el))
+})
 </script>
 
 <style scoped>
