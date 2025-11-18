@@ -23,10 +23,10 @@ import { ref, onMounted } from 'vue'
 import Countup from 'vue-countup-v3'
 
 const numbers = ref([
-    {id:1, number:15, title:"Projets réalisés"},
+    {id:1, number:50, title:"Projets réalisés"},
     {id:2, number:200, title:"Heures de Design "},
-    {id:3, number:120, title:"Clients satisfaits"},
-    {id:4, number:3, title:"Années d'expérience"},
+    {id:3, number:45, title:"Clients satisfaits"},
+    {id:4, number:2, title:"Années d'expérience"},
 ])
     
 const statsSection = ref(null);
