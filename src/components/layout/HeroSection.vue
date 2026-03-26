@@ -22,14 +22,21 @@
           >
             <span class="block sm:inline">Salut, Je m'appelle</span> &nbsp;
             <div
-              class=" text-stroke-primary stroke-text text-stroke-secondary dark:text-stroke-primary"
+              class="text-stroke-primary stroke-text text-stroke-secondary dark:text-stroke-primary"
             >
               Roseline.
             </div>
           </h1>
-          <h2 class="text-2xl md:text-4xl font-semibold h-10"
-          :class="isDark ? 'text-[rgb(221,12,239)]':'text-yellow-500'"> <span class="text-slate-900 dark:text-white">Je suis</span> {{ displayedText }} <span class="border-r-4 border-slate-900 dark:border-[rgb(221,12,239)] animate-blink ml-1"></span>
-        </h2>
+          <h2
+            class="text-2xl md:text-4xl font-semibold h-10"
+            :class="isDark ? 'text-[rgb(221,12,239)]' : 'text-yellow-500'"
+          >
+            <span class="text-slate-900 dark:text-white">Je suis</span>
+            {{ displayedText }}
+            <span
+              class="border-r-4 border-slate-900 dark:border-[rgb(221,12,239)] animate-blink ml-1"
+            ></span>
+          </h2>
           <p
             class="text-base sm:text-lg lg:text-xl max-w-2xl mx-auto lg:mx-0 font-medium text-gray-700 dark:text-gray-300 leading-relaxed mb-6 lg:mb-8"
           >
@@ -63,7 +70,6 @@
                 @click="downloadCV"
               />
             </div>
-            
           </div>
         </div>
 
@@ -77,7 +83,7 @@
                 src="/src/assets/hero.jpg"
                 alt="Roseline Dako - Graphiste Designer"
                 class="w-full h-full object-cover"
-                :class="{'zoom-in' : isZoomed }"
+                :class="{ 'zoom-in': isZoomed }"
                 loading="eager"
               />
             </div>
@@ -90,60 +96,56 @@
 
 <script setup>
 // Animation d'entrée au scroll
-import {ref, onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import Button from "../UI/Button.vue";
 
-const isZoomed = ref(false)
+const isZoomed = ref(false);
 
-onMounted(()=>{
-  setTimeout(()=>{
-    isZoomed.value = true
-  },500)
-})
+onMounted(() => {
+  setTimeout(() => {
+    isZoomed.value = true;
+  }, 500);
+});
 
-const roles = [
-  'Graphiste.',
-  'Designer UI/UX.'
-]
+const roles = ["Graphiste.", "Designer UI/UX."];
 
-const displayedText = ref('')
-const currentRole = ref(0)
-const isDeleting = ref(false)
-const isDark = ref(false)
+const displayedText = ref("");
+const currentRole = ref(0);
+const isDeleting = ref(false);
+const isDark = ref(false);
 
-const typeSpeed = 100
-const eraseSpeed = 50
-const delayBetweenWords = 2000
+const typeSpeed = 100;
+const eraseSpeed = 50;
+const delayBetweenWords = 2000;
 
 function typeEffect() {
-  const role = roles[currentRole.value]
-  
+  const role = roles[currentRole.value];
+
   if (!isDeleting.value) {
     // Écriture du texte
-    displayedText.value = role.substring(0, displayedText.value.length + 1)
-    
+    displayedText.value = role.substring(0, displayedText.value.length + 1);
+
     if (displayedText.value === role) {
       // Pause avant de commencer à effacer
       setTimeout(() => {
-        isDeleting.value = true
-        typeEffect()
-      }, delayBetweenWords)
-      return
+        isDeleting.value = true;
+        typeEffect();
+      }, delayBetweenWords);
+      return;
     }
   } else {
     // Effacement du texte
-    displayedText.value = role.substring(0, displayedText.value.length - 1)
-    
-    if (displayedText.value === '') {
-      isDeleting.value = false
-      currentRole.value = (currentRole.value + 1) % roles.length
+    displayedText.value = role.substring(0, displayedText.value.length - 1);
+
+    if (displayedText.value === "") {
+      isDeleting.value = false;
+      currentRole.value = (currentRole.value + 1) % roles.length;
     }
   }
-  
-  const speed = isDeleting.value ? eraseSpeed : typeSpeed
-  setTimeout(typeEffect, speed)
-}
 
+  const speed = isDeleting.value ? eraseSpeed : typeSpeed;
+  setTimeout(typeEffect, speed);
+}
 
 const scrollToContact = () => {
   const contactSection = document.querySelector("#contact");
@@ -166,43 +168,46 @@ const downloadCV = () => {
 onMounted(() => {
   // Gestion du thème sombre
   const checkDark = () => {
-    isDark.value = document.documentElement.classList.contains('dark')
-  }
-  checkDark()
-  
-  const observer = new MutationObserver(checkDark)
+    isDark.value = document.documentElement.classList.contains("dark");
+  };
+  checkDark();
+
+  const observer = new MutationObserver(checkDark);
   observer.observe(document.documentElement, {
     attributes: true,
-    attributeFilter: ['class']
-  })
-  
+    attributeFilter: ["class"],
+  });
+
   // Démarrage de l'effet typewriter
-  typeEffect()
-  
+  typeEffect();
+
   // Animation d'entrée
   const intersectionObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("animate-fade-in-up")
+          entry.target.classList.add("animate-fade-in-up");
         }
-      })
+      });
     },
     { threshold: 0.1 }
-  )
+  );
 
-  const elements = document.querySelectorAll(".hero-animate")
-  elements.forEach((el) => intersectionObserver.observe(el))
-})
+  const elements = document.querySelectorAll(".hero-animate");
+  elements.forEach((el) => intersectionObserver.observe(el));
+});
 </script>
 
 <style scoped>
 @keyframes blink {
-  0%, 50%, 100% {
-    opacity:1;
+  0%,
+  50%,
+  100% {
+    opacity: 1;
   }
-  25%, 75% {
-    opacity:0;
+  25%,
+  75% {
+    opacity: 0;
   }
 }
 
@@ -210,8 +215,8 @@ onMounted(() => {
   animation: zoom-in 2s ease-in-out;
 }
 
-@keyframes zoom-in{
-  0%{
+@keyframes zoom-in {
+  0% {
     transform: scale(1.2);
   }
   100% {

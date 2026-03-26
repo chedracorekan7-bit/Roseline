@@ -7,12 +7,14 @@
           <span class="sm:hidden">Roseline Dako</span>
         </div>
         <div class="text-center text-xs sm:text-sm lg:text-base text-gray-300">
-          © Copyright 2025. Tous droits réservés.
+          © Copyright {{currentYear}}. Tous droits réservés.
         </div>
       </div>
     </div>
   </footer>
 </template>
 <script setup>
+import {computed} from vue;
 
+const currentYear = computed(()=>new Date().getFullYear());
 </script>
