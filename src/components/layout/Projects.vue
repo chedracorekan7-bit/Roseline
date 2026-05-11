@@ -102,6 +102,11 @@ import projet10 from "@/assets/img/projet10.jpg";
 import projet14 from "@/assets/img/projet14.PNG";
 import projet15 from "@/assets/img/projet15.PNG";
 import projet16 from "@/assets/img/projet16.PNG";
+import projet17 from "@/assets/img/projet17.JPG";
+import projet18 from "@/assets/img/projet18.JPG";
+import projet19 from "@/assets/img/projet19.JPG";
+import projet20 from "@/assets/img/projet20.JPG";
+import projet21 from "@/assets/img/projet21.JPG";
 
 
 // Definir les options de navigation
@@ -229,6 +234,39 @@ const projects = ref([
     description: "Formulaire d'inscription et de connection.",
     image: projet16,
     tags: ["Figma"],
+    liveLink: "/",
+    codeLink: "",
+  },
+  {
+    title: "Graphisme",
+    description: "Conception d'un visuel pour un atelier de maroquinerie.",
+    image: projet17,
+    tags: ["Photoshop"],
+    liveLink: "/",
+    codeLink: "",
+  },
+  {
+    title: "Graphisme",
+    description: "Conception d'un visuel pour un atelier de maroquinerie.",
+    image: projet18,
+    tags: ["Photoshop"],
+    liveLink: "/",
+    codeLink: "",
+  },
+ 
+  {
+    title: "Graphisme",
+    description: "Affiche publicitaire pour une entreprise d'import export.",
+    image: projet20,
+    tags: ["Photoshop"],
+    liveLink: "/",
+    codeLink: "",
+  },
+  {
+    title: "Graphisme",
+    description: "Conception d'un visuel pour une patisserie.",
+    image: projet21,
+    tags: ["Photoshop"],
     liveLink: "/",
     codeLink: "",
   },
