@@ -102,8 +102,8 @@ import projet10 from "@/assets/img/projet10.jpg";
 import projet14 from "@/assets/img/projet14.PNG";
 import projet15 from "@/assets/img/projet15.PNG";
 import projet16 from "@/assets/img/projet16.PNG";
-import projet17 from "@/assets/img/projet17.JPG";
-import projet18 from "@/assets/img/projet18.JPG";
+import projet17 from "@/assets/img/projet17.JPG"; 
+import projet18 from "@/assets/img/projet18.jpg";
 import projet20 from "@/assets/img/projet20.JPG";
 import projet21 from "@/assets/img/projet21.jpg";
 
